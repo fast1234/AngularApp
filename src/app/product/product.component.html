@@ -1,21 +1,28 @@
-<div>
-        <table class='table'>
+<div class='table-responsive'>
+       
+<table class='table'>   
     <thead>
         <tr>
-            <th>Product</th>
-            <th>Code</th>
-            <th>Available</th>
+            <th> <button (click)='onClick()'>{{(toggle?'Hide':'Show')+' Image'}}</button>
+            </th>
+            <th>Product Name</th>
+            <th>Product Code</th>
+            <th>Available From</th>
             <th>Price</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor='let product of products'>
             <td>
+                <img *ngIf='toggle' [src]='product.imageUrl' 
+                [title]='product.productName'>
+            </td>    
+            <td>
                 <a [routerLink]="['/products',product.productId]">
                    {{ product.productName }}
                 </a>
             </td>
-            <td> {{ product.productCode | lowercase }}</td>
+            <td> {{ product.productCode }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency:'USD':true:'1.2-2'}}</td>
         </tr>
