@@ -1,0 +1,24 @@
+<div>
+        <table class='table'>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let product of products'>
+            <td>
+                <a [routerLink]="['/products',product.productId]">
+                   {{ product.productName }}
+                </a>
+            </td>
+            <td> {{ product.productCode | lowercase }}</td>
+            <td>{{ product.releaseDate }}</td>
+            <td>{{ product.price | currency:'USD':true:'1.2-2'}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
